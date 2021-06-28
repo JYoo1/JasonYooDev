@@ -1,3 +1,5 @@
 [build]
   base    = "vue-front-end"
-  command = "echo 'default context'"
+  command = "npm run build"
+  publish="dist"
+  # The base directory should be the path to the nested Vue project
