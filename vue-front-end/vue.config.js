@@ -1,13 +1,4 @@
 module.exports = {
-  devServer: {
-    proxy: {
-      '/api': {
-        target: 'http://localhost:8081',
-        ws: true,
-        changeOrigin: true
-      }
-    }
-  },
   configureWebpack: {
     devServer: {
       headers: { "Access-Control-Allow-Origin": "*" }
@@ -16,5 +7,5 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-  publicPath: process.env.NODE_ENV === "production" ? "/vue-front-end/" : "/"
+  publicPath: process.env.NODE_ENV === "production" ? "./" : "/"
 }
