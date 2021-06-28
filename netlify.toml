@@ -1,0 +1,4 @@
+[build]
+  base    = "vue-front-end"
+  publish = "subdirectory/dist/"
+  command = "your build command"
