@@ -16,5 +16,5 @@ module.exports = {
   "transpileDependencies": [
     "vuetify"
   ],
-  publicPath: process.env.NODE_ENV === "production" ? "/index.html" : "/"
+  publicPath: process.env.NODE_ENV === "production" ? "/MapAPI/" : "/"
 }
