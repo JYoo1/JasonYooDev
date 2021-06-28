@@ -1,4 +1,3 @@
 [build]
   base    = "vue-front-end"
-  publish = "public/"
   command = "echo 'default context'"
