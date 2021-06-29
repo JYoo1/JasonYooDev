@@ -151,9 +151,9 @@ export default {
     //   }
     // },
   },
-  mounted() {
-    this.getUserPosition();
-  },
+  // mounted() {
+  //   this.getUserPosition();
+  // },
   watch: {
     newSearch:{
       deep: true,

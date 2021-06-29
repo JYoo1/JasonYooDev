@@ -93,7 +93,7 @@ export default {
         this.address = await this.getAddress();
         this.fullLeafletData = await this.getFullData();
         // this.$emit("input", { position: value, address: this.address, something: this.testing});
-        this.$emit("input", {position: value, address: this.fullLeafletData.display_name, userLocation: this.userLocation});
+        this.$emit("input", {position: value, address: this.fullLeafletData.display_name});
       }
     },
     fullObject:{

@@ -101,7 +101,6 @@ export default {
     searchLocation(item){
       //new location coordinates
       this.newSearchLocation = { lat: item.lat, lng: item.lng };
-
     },
   },
 };
