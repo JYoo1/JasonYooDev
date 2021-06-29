@@ -123,7 +123,8 @@ export default {
         this.searchLocations = this.userLocation
       }
         const customSearch = (this.searchEvents + "+" + this.searchLocations)
-        axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
+        // axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
+        axios.get('/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
          customSearch +
          '&radius=10000&'+
         '&key=AIzaSyB6mR006aP-QxUxyF8YHa71-9xc42p_FYI')
