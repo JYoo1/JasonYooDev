@@ -121,7 +121,7 @@ export default {
         const customSearch = (this.searchEvents + "+" + this.searchLocations)
         // axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
         axios.get('/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
-         customSearch +
+        customSearch +
          '&radius=10000&'+
         '&key=AIzaSyB6mR006aP-QxUxyF8YHa71-9xc42p_FYI')
         .then(res=>{
@@ -139,17 +139,17 @@ export default {
     test(){
       console.log(this.userLocation)
     },
-    async getUserPosition() {
-      if (navigator.geolocation) {
-        // get GPS position
-        navigator.geolocation.getCurrentPosition(pos => {
-          this.userLocation = {
-            lat: pos.coords.latitude,
-            lng: pos.coords.longitude
-          };
-        });
-      }
-    },
+    // async getUserPosition() {
+    //   if (navigator.geolocation) {
+    //     // get GPS position
+    //     navigator.geolocation.getCurrentPosition(pos => {
+    //       this.userLocation = {
+    //         lat: pos.coords.latitude,
+    //         lng: pos.coords.longitude
+    //       };
+    //     });
+    //   }
+    // },
   },
   mounted() {
     this.getUserPosition();
