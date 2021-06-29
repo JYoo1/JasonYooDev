@@ -1,8 +1,8 @@
 <template>
   <l-map
     ref="map"
-    @click = "test"
     @dblclick="onMapClick"
+    @click="test"
     :zoom="zoom"
     :center="[
       position.lat || userLocation.lat || defaultLocation.lat,
@@ -52,8 +52,8 @@ export default {
     defaultLocation: {
       type: Object,
       default: () => ({
-        lat: 8.9806,
-        lng: 38.7578
+        lat: 33.6792,
+        lng: 117.810
       })
     }
   },
@@ -91,9 +91,9 @@ export default {
       deep: true,
       async handler(value) {
         this.address = await this.getAddress();
-        this.testing = await this.getFullData();
+        this.fullLeafletData = await this.getFullData();
         // this.$emit("input", { position: value, address: this.address, something: this.testing});
-        this.$emit("input", {position: value, address: this.testing.display_name, test: this.testing.address.city});
+        this.$emit("input", {position: value, address: this.fullLeafletData.display_name, userLocation: this.userLocation});
       }
     },
     fullObject:{
@@ -166,7 +166,7 @@ export default {
       this.position = value.latlng;
     },
     test(){
-      console.log(this.newSearchLocation)
+      console.log(this.userLocation)
     },
     onSearch(value) {
       const loc = value.location;

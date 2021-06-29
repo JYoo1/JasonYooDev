@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-main>
-        <v-container  grid-list-md class="scrollable">
+        <v-container grid-list-md class="scrollable">
             <v-card
               class="mx-auto my-12"
               max-width="374"

@@ -12,27 +12,39 @@
                     class="
                       primary white--text`
                     "
+                    @click= "test"
                   >mdi-map-marker</v-icon
                   >
                 </v-list-item-avatar>
                 <v-list-item-content>
+
                   <v-list-item-title class="title"
-                    @click="searchLocation">No Location selected</v-list-item-title>
-                  <v-text-field
-                    label="Search: Food or Events"
-                    placeholder="Ex: Basketball or Pasta"
-                    outlined
-                    v-model= "searchEvents"
-                  ></v-text-field>
-                  <v-text-field
-                    label="Search: Location"
-                    placeholder="Ex: Irvine or Korea"
-                    outlined
-                    v-model= "searchLocations"
-                  ></v-text-field>
-                  <v-btn depressed @click="searchButton">
-                    Search
-                  </v-btn>
+                    >No Location selected</v-list-item-title>
+                  <v-row>
+                    <v-col cols="12" sm="6" md="3">
+                      <v-text-field
+                        label="Search: Food or Events"
+                        placeholder="Ex: Basketball or Pasta"
+                        outlined
+                        v-model= "searchEvents"
+                        @keyup.enter="searchButton()"
+                      ></v-text-field>
+                    </v-col >
+                    <v-col cols="12" sm="6" md="3">
+                      <v-text-field
+                        label="Search: Location"
+                        placeholder="Ex: Irvine or Korea"
+                        outlined
+                        v-model= "searchLocations"
+                        @keyup.enter="searchButton()"
+                      ></v-text-field>
+                    </v-col >
+                    <v-col>
+                      <v-btn large color="primary" @click="searchButton">
+                        Search
+                      </v-btn>
+                    </v-col >
+                  </v-row>
                 </v-list-item-content>
               </v-list-item>
               <v-list-item v-else>
@@ -64,8 +76,8 @@
           </v-flex>
             <SearchResults v-model="newSearch" :fullObject="fullObject"  />
           <v-flex xs12 md8>
-            <v-sheet>
-              <div style="width:100%;height: 500px">
+            <v-sheet id="test">
+              <div style="width:100%;height: 500px;">
                 <GeolocationSelector v-model="leafletValues" :fullObject="fullObject" :newSearch="newSearch" :key="key" />
               </div>
             </v-sheet>
@@ -96,16 +108,21 @@ export default {
     fullObject: {},
     searchEvents: "",
     searchLocations: "",
+    userLocation: {}
   }),
   methods: {
     reset() {
       this.key += 1;
       this.leafletValues = {};
       this.newSearch = {};
-      this.fullObject = {}
+      this.fullObject = {};
+      this.searchLocations = "";
     },
     searchLocation(){
-      const customSearch = (this.searchEvents + "+" + this.searchLocations)
+      if (this.searchLocations === ""){
+        this.searchLocations = this.userLocation
+      }
+        const customSearch = (this.searchEvents + "+" + this.searchLocations)
         axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
          customSearch +
          '&radius=10000&'+
@@ -120,8 +137,25 @@ export default {
         })
     },
     searchButton(){
-     this.searchLocation()
+      this.searchLocation()
     },
+    test(){
+      console.log(this.userLocation)
+    },
+    async getUserPosition() {
+      if (navigator.geolocation) {
+        // get GPS position
+        navigator.geolocation.getCurrentPosition(pos => {
+          this.userLocation = {
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+          };
+        });
+      }
+    },
+  },
+  mounted() {
+    this.getUserPosition();
   },
   watch: {
     newSearch:{
@@ -130,7 +164,12 @@ export default {
         this.searchEvents = this.newSearch.newSearchLocation
         // console.log(this.searchEvents)
       }
-    },
+    }
   },
 };
 </script>
+
+<style scoped>
+  .main{
+  }
+</style>
