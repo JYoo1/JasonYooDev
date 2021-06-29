@@ -17,7 +17,6 @@
                   >
                 </v-list-item-avatar>
                 <v-list-item-content>
-
                   <v-list-item-title class="title"
                     >No Location selected</v-list-item-title>
                   <v-row>
@@ -119,9 +118,6 @@ export default {
       this.searchLocations = "";
     },
     searchLocation(){
-      if (this.searchLocations === ""){
-        this.searchLocations = this.userLocation
-      }
         const customSearch = (this.searchEvents + "+" + this.searchLocations)
         // axios.get('https://cors-anywhere.herokuapp.com/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
         axios.get('/https://maps.googleapis.com/maps/api/place/textsearch/json?query=' +
