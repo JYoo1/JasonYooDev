@@ -11,6 +11,7 @@ This website is made with Vue.js as the project framework, Vuetify for the front
 
 https://github.com/vue-leaflet/Vue2Leaflet  (Leaflet)
 https://developers.google.com/docs/api  (Google Maps API)
+https://cors-anywhere.herokuapp.com (Bypass CORS THIS IS A MUST)
 
 
 ## Get Started
