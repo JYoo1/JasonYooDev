@@ -73,7 +73,11 @@
               </v-list-item>
             </v-card>
           </v-flex>
-            <SearchResults v-model="newSearch" :fullObject="fullObject"  />
+          <v-flex xs12 md4>
+            <v-list dense>
+              <SearchResults v-model="newSearch" :fullObject="fullObject"  />
+            </v-list>
+          </v-flex>
           <v-flex xs12 md8>
             <v-sheet id="test">
               <div style="width:100%;height: 500px;">
