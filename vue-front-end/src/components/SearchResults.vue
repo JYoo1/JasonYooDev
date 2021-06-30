@@ -1,6 +1,7 @@
 <template>
+  <v-app>
     <v-main>
-        <v-container grid-list-md class="scrollable" v-if="Object.keys(this.fullObject).length > 0>
+        <v-container grid-list-md class="scrollable">
             <v-card
               class="mx-auto my-12"
               max-width="374"
@@ -56,12 +57,10 @@
             </v-card>
         </v-container>
     </v-main>
+  </v-app>
 </template>
 
 <script>
-
-
-
 export default {
   name: "SearchResults",
   components: {
